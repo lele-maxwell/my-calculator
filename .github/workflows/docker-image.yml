@@ -3,7 +3,7 @@ name: Build and Slim Docker Image
 on:
   push:
     branches:
-      - main  # Trigger workflow on push to the 'main' branch.
+      - shell_scripting  # Trigger workflow on push to the 'main' branch.
 
 jobs:
   build-and-slim:
