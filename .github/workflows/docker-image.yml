@@ -26,7 +26,7 @@ jobs:
     - name: Build Docker image
       run: |
         docker build -t ghcr.io/${{ github.repository_owner }}/my-cal-image:latest .
-        docker run -it --rm --name calculator-container ghcr.io/${{ github.repository_owner }}/my-cal-image:latest 
+      # docker run -it --rm --name calculator-container ghcr.io/${{ github.repository_owner }}/my-cal-image:latest 
 
     # Step 4: Slim the Docker image using Kitabisa Action
     - name: Slim Docker image
