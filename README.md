@@ -29,7 +29,7 @@ step1:
 
 simply pull the image using the command bellow
 
-  docker pull ghcr.io/lele-maxwell/my-cal-image:slim
+ ``` docker pull ghcr.io/lele-maxwell/my-cal-image:slim ```
 
 step 2:
 
@@ -44,7 +44,8 @@ be exevuted  in the container directly
 
 image name = ghcr.io/lele-maxwell/my-cal-image:slim
 
- docker run -it --name  << container-name >>  << image-name >>
+ 
+ ``` docker run -it --name   container-name   hcr.io/lele-maxwell/my-cal-image:slim ```
 
 From here follow the steps promted to do your operation   
 
