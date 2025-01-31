@@ -1,26 +1,29 @@
-# stage 1
+# Stage 1: Build the application
+FROM rust:latest AS builder
 
-FROM rust:latest as builder
+# Set the working directory to /app
+WORKDIR /app
 
-WORKDIR /app/
+# Copy the current directory contents into the container at /app
+COPY . .
 
-COPY . . 
+# Update package list and install dependencies
+RUN apt-get update && apt-get install -y pkg-config libssl-dev
 
+# Build the application in release mode
 RUN cargo build --release
 
-RUN apt-get update  
-
-#stage 2
-
-
+# Stage 2: Create a minimal image for the application
 FROM debian:latest
 
+# Update package list and install dependencies
 RUN apt-get update && apt-get install -y libssl-dev
 
-COPY --from=builder /app/target/release/calculator /app/calculator
+# Copy the compiled binary from the builder stage
+COPY --from=builder /app/target/release/calculator /app/
 
+# Make the binary executable
 RUN chmod +x /app/calculator
 
-
-
-CMD ["./calculator"]
+# Set the command to run the application
+CMD ["/app/calculator"]
